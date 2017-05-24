@@ -1,0 +1,64 @@
+package Fr
+
+use VirgoPolicy v2r6 
+use root  v5r34p050 -no_auto_imports
+
+private
+macro SRCFILES " FrameL.c FrIO.c FrFilter.c -s=zlib *.c "
+
+# Options for C compiler
+macro_append cflags " -g -O -Wall -fPIC -DG__ROOT "
+
+# The constituents
+macro constituents "Frame FrDump FrCopy FrCheck" \
+ 	ROOT       "Frame FrDump FrCopy FrCheck FR_G_ROOT FrameROOT"
+
+
+public
+#-----------------------------
+# Standard library and applications
+#-----------------------------
+
+include_dirs ${FRROOT}/src/zlib
+
+macro_append cflags " -std=c99 "
+
+macro        Fr_linkopts "-L$(FRROOT)/$(Fr_tag) -lFrame"
+macro_append Fr_linkopts "" \
+	     Linux " -Wl,-rpath,$(FRROOT)/$(Fr_tag)"
+
+library Frame -no_prototypes ${SRCFILES}
+
+application FrDump      FrDump.c
+application FrCopy      FrCopy.c
+application FrCheck     FrCheck.c
+
+#-----------------------------
+# ROOT library
+#-----------------------------
+
+library FrameROOT ${SRCFILES} -import=root -s=${bin} FR_G_ROOT.cc
+
+# Options for rootcint
+macro rootcint_flags " " \
+ 	ROOT "-D_USE_ROOT -DG__ROOT -D__cplusplus"
+
+# The rootcint document
+pattern document_rootcint \
+      document rootcint <name> <files>
+
+macro document_rootcint_pat "" \
+      ROOT "document_rootcint"
+
+apply_pattern $(document_rootcint_pat) name=FR_G_ROOT files="${FRROOT}/src/FrameL.h ${FRROOT}/root/FrRootLinkDef.h" 
+
+# Constituents dependencies
+macro FrDump_dependencies "Frame"
+macro FrCopy_dependencies "Frame"
+macro FrCheck_dependencies "Frame"
+
+#---------- enrich paths with applications and libraries
+path_prepend LD_LIBRARY_PATH "$(FRROOT)/$(Fr_tag)"
+path_prepend PATH "$(FRROOT)/$(Fr_tag)"
+macro_prepend RPATH "$(FRROOT)/$(Fr_tag)"
+

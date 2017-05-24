@@ -1,0 +1,8 @@
+#!/bin/csh
+
+setenv FR      `pwd`/..
+setenv FRROOT  ${FR}
+echo "Set FRROOT to ${FRROOT} "
+
+setenv LD_LIBRARY_PATH   ${FR}/${UNAME}:${LD_LIBRARY_PATH}
+setenv PATH              ${FR}/${UNAME}:${PATH}

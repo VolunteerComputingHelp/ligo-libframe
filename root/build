@@ -1,0 +1,41 @@
+#!/bin/csh -f
+
+#set ROOTSYS = "/virgo/ext/root/root_v5.14.00/Linux-x86_64-SL5"
+if ( $?ROOTSYS == 0 ) then
+  echo "ROOTSYS is undefined"
+  exit
+endif
+
+#------------------------------------------------------------------------------
+if ( $?UNAME == 0 ) then
+  setenv UNAME `uname`
+endif
+if( $UNAME == "Linux" ) then
+  setenv UNAME `uname`-`uname -m`
+endif
+echo " -------> This is $UNAME <--- ROOTSYS is $ROOTSYS "
+mkdir ../$UNAME  
+cd ../$UNAME
+
+rm -f *.o
+
+echo "----------------------------------------Compile Fr code"
+set CXXGENFL = "-O -fPIC  -fno-exceptions " 
+
+gcc  $CXXGENFL -I../src -I../src/zlib -c ../src/FrIO.c
+gcc  $CXXGENFL -I../src -I../src/zlib -c ../src/FrameL.c 
+gcc  $CXXGENFL -I../src -I../src/zlib -c ../src/FrFilter.c
+gcc  $CXXGENFL -I../src -I../src/zlib -c ../src/zlib/*.c 
+
+echo "-----------------------------------------------Run CINT" 
+rootcint -f G_frameL.C -c -I../src/ -D__cplusplus ../src/FrameL.h  ../root/FrRootLinkDef.h
+
+echo "------------------------------------compile CINT output"
+g++ -DG__REGEXP -DG__SHAREDLIB -DG__OSFDLL $CXXGENFL -I$ROOTSYS/include -I$ROOTSYS/include/root -I../src -c G_frameL.C
+
+echo "----------------------------- build ROOT Shared Library"
+gcc -shared  -g -o libFrameROOT.so  *.o 
+
+echo "------------------------------------------------cleanup"
+rm -f *.o
+rm -f G_frameL.*

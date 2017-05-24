@@ -1,0 +1,43 @@
+#!/bin/sh
+
+MYCC="gcc -O -Wall"
+MYUNAME=${UNAME:-`uname`}
+
+#--------------- special convention on alpha
+if  [ $MYUNAME = "OSF1" ] 
+then 
+MYUNAME="alpha"
+fi
+
+FLAGS=" -I../src -I../src/zlib libFrame.a -lm"
+
+echo " -------> This is $MYUNAME <--- We compile with $MYCC "
+mkdir ../$MYUNAME 
+cd ../$MYUNAME 
+
+echo "----------------------------Delete existing *.o files"        
+rm   -f  *.o
+
+echo "----------------------------------Compile the library" 
+${MYCC}  -fno-common -DPIC -c ../src/FrameL.c ../src/FrIO.c ../src/FrFilter.c ../src/zlib/*.c -I../src/zlib
+
+echo "----------------------------Build the regular library"
+rm  -f libFrame.a
+ar   r libFrame.a  *.o
+ranlib libFrame.a
+
+echo "-----------------------------Build the shared Library"
+#${MYCC} -Wl,-shared -g -o libFrame.so  *.o 
+#${MYCC} -dynamiclib -flat_namespace -undefined suppress -o libFrame.dynlib *.o
+${MYCC} -dynamiclib -o libFrame.dylib *.o
+
+echo "--------------------------------Compile the utilities"
+
+${MYCC} -o FrDump      ../src/FrDump.c    ${FLAGS} 
+${MYCC} -o FrCopy      ../src/FrCopy.c    ${FLAGS}
+${MYCC} -o FrCheck     ../src/FrCheck.c   ${FLAGS} 
+
+echo "-------------------------------------Delete *.o files"        
+rm   -f  *.o
+ls -l
+echo "--------------------------------------------All done"

@@ -1,0 +1,78 @@
+libframe (8.30-1) unstable; urgency=low
+
+  * libframe-8.30
+
+ -- Adam Mercer <adam.mercer@gmail.com>  Tue, 12 Apr 2016 07:48:52 -0500
+
+libframe (8.20-1) testing; urgency=low
+
+  * libframe-8.20
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Wed, 25 Sep 2013 09:30:54 -0500
+
+libframe (8.19.1-1) testing; urgency=low
+
+  * libframe-8.19.1
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Fri, 10 May 2013 13:37:58 -0500
+
+libframe (8.17.2-1) testing; urgency=low
+
+  * libframe-8.17.2
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Tue, 2 October 2012 08:20:24 -0500
+
+libframe (8.15-5) testing; urgency=low
+
+  * convert to source format 3.0 (quilt)
+
+ -- Steffen Grunewald <steffen.grunewald@aei.mpg.de>  Wed, 05 Sep 2011 09:30:00 +0200
+
+libframe (8.15-1) testing; urgency=low
+
+  * libframe-8.15
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Tue, 31 May 2011 10:40:53 -0500
+
+libframe (8.14-1) testing; urgency=low
+
+  * libframe-8.14
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Fri, 14 Apr 2011 10:14:17 -0500
+
+libframe (8.13-1) testing; urgency=low
+
+  * libframe-8.13
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Sun, 28 Nov 2010 23:27:31 -0600
+
+libframe (8.11-1) testing; urgency=low
+
+  * libframe-8.11
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Fri, 19 Jan 2010 09:44:09 -0600
+
+libframe (8.08.1-1) testing; urgency=low
+
+  * libframe-8.08.1
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Thu, 2 Jul 2009 11:02:56 -0600
+
+libframe (8.08-2) testing; urgency=low
+
+  * libframe-8.08 with some rules fixes
+
+ -- Steffen Grunewald <steffen.grunewald@aei.mpg.de>  Wed, 01 Jul 2009 16:45:00 +0200
+
+libframe (8.08-1) testing; urgency=low
+
+  * libframe-8.08
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Tue, 30 Jun 2009 14:32:16 -0600
+
+libframe (8.04-1) testing; urgency=low
+
+  * initial packaging of libframe
+
+ -- Adam Mercer <adam.mercer@ligo.org>  Tue, 19 May 2009 15:15:23 -0600
+

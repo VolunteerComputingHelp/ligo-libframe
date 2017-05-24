@@ -1,0 +1,51 @@
+#!/bin/sh
+
+MYCC="cc -O -arch ev6"
+MYUNAME="OSF1"
+FLAGS=" -I../src -I../src/zlib libFrame.a -lm"
+
+echo " -------> This is $MYUNAME <--- We compile with $MYCC "
+mkdir ../$MYUNAME 
+cd ../$MYUNAME 
+
+echo "----------------------------Delete existing *.o files"        
+rm   -f  *.o
+
+echo "----------------------------------Compile the library" 
+${MYCC}  -c ../src/FrameL.c ../src/FrIO.c ../src/FrFilter.c ../src/zlib/*.c -I../src/zlib
+
+echo "----------------------------Build the regular library"
+rm  -f libFrame.a
+ar   r libFrame.a  *.o
+ranlib libFrame.a
+
+echo "--------------------------------Compile the utilities"
+
+${MYCC} -o FrDump      ../src/FrDump.c    ${FLAGS} 
+${MYCC} -o FrCopy      ../src/FrCopy.c    ${FLAGS} 
+${MYCC} -o FrCheck     ../src/FrCheck.c   ${FLAGS} 
+ln -s FrDump  FrDump.exe
+ln -s FrCopy  FrCopy.exe
+ln -s FrCheck FrCheck.exe
+
+echo "------------We Compile the examples and test program"
+
+${MYCC} -o FrCompress   ../src/exampleCompress.c   ${FLAGS} 
+${MYCC} -o FrCopyFile   ../src/exampleCopyFile.c   ${FLAGS} 
+${MYCC} -o FrCopyFrame  ../src/exampleCopyFrame.c  ${FLAGS} 
+${MYCC} -o FrFileDump   ../src/exampleFileDump.c   ${FLAGS} 
+${MYCC} -o FrFull       ../src/exampleFull.c       ${FLAGS} 
+${MYCC} -o FrMark       ../src/exampleMark.c       ${FLAGS} 
+${MYCC} -o FrMultiR     ../src/exampleMultiR.c     ${FLAGS} 
+${MYCC} -o FrMultiTOC   ../src/exampleMultiTOC.c   ${FLAGS} 
+${MYCC} -o FrMultiW     ../src/exampleMultiW.c     ${FLAGS} 
+${MYCC} -o FrOnline     ../src/exampleOnline.c     ${FLAGS} 
+${MYCC} -o FrReshape    ../src/exampleReshape.c    ${FLAGS} 
+${MYCC} -o FrSpeed      ../src/exampleSpeed.c      ${FLAGS} 
+${MYCC} -o FrStat       ../src/exampleStat.c       ${FLAGS} 
+
+echo "-------------------------------------Delete *.o files"        
+rm   -f  *.o
+ls -l
+echo "--------------------------------------------All done"
+

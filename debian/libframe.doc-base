@@ -1,0 +1,8 @@
+Document: libframe
+Title: Frame Library (Fr) User's Manual
+Author: ?
+Abstract: This manual describes the LIGO/VIRGO frame library API.
+Section: LAL
+
+Format: PDF
+Files: /opt/lscsoft/libframe/share/doc/libframe*/*.pdf

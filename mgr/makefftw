@@ -1,0 +1,32 @@
+#!/bin/sh
+
+MYUNAME=${UNAME:-`uname`}
+MYCC="gcc -O -Wall -DFFTW_MALLOC"
+
+#--------------- special convention on alpha and Linux
+if  [ $MYUNAME = "OSF1" ] 
+then MYUNAME="alpha"
+fi
+if  [ $MYUNAME = "Linux" ] 
+then MYUNAME=`uname`-`uname -m`
+fi
+
+echo " -------> This is $MYUNAME <--- We compile with $MYCC "
+mkdir ../$MYUNAME 
+cd ../$MYUNAME 
+
+echo "----------------------------Delete existing *.o files"        
+rm   -f  *.o
+
+echo "-------Compile and Build the library with FFTW malloc"
+${MYCC}  -c ../src/FrameL.c ../src/FrIO.c ../src/FrFilter.c ../src/zlib/*.c -I../src/zlib
+
+rm  -f libFrameFFTW.a
+ar   r libFrameFFTW.a  *.o
+ranlib libFrameFFTW.a
+
+echo "-------------------------------------Delete *.o files"        
+rm   -f  *.o
+ls -l
+echo "--------------------------------------------All done"
+

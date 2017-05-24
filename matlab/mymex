@@ -1,0 +1,9 @@
+#
+if ( $?UNAME == 0 ) then
+  setenv UNAME `uname`
+endif
+
+mex frextract.c   ../$UNAME/libFrame.a -I../src
+mex frgetvect.c   ../$UNAME/libFrame.a -I../src
+mex frgetvectN.c  ../$UNAME/libFrame.a -I../src
+mex mkframe.c     ../$UNAME/libFrame.a -I../src

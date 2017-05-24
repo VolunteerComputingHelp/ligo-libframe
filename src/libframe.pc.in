@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: @PACKAGE@
+Description: LIGO/VIRGO frame library
+Version: @PACKAGE_VERSION@
+Libs: -L@libdir@ -lm -lFrame
+Cflags: @FR_LONG_LONG_FLAG@ -I@includedir@

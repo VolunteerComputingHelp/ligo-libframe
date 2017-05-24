@@ -1,0 +1,52 @@
+#!/bin/sh
+
+MYUNAME=${UNAME:-`uname`}
+MYCC="gcc -fPIC -O -Wall"
+
+#--------------- special convention on alpha and Linux
+if  [ $MYUNAME = "OSF1" ] 
+then MYUNAME="alpha"
+fi
+if  [ $MYUNAME = "Linux" ] 
+then MYUNAME=`uname`-`uname -m`
+fi
+
+FLAGS=" -I../src -I../src/zlib libFrame.a -lm"
+
+echo " -------> This is $MYUNAME <--- We compile with $MYCC "
+mkdir ../$MYUNAME 
+cd ../$MYUNAME 
+
+echo "----------------------------Delete existing *.o files"        
+rm   -f  *.o
+
+echo "----------------------------------Compile the library" 
+${MYCC}  -c ../src/FrameL.c ../src/FrIO.c ../src/FrFilter.c ../src/zlib/*.c -I../src/zlib
+
+echo "----------------------------Build the regular library"
+rm  -f libFrame.a
+ar   r libFrame.a  *.o
+ranlib libFrame.a
+
+echo "-----------------------------Build the shared Library"
+${MYCC} -shared -g -fPIC -o libFrame.so  *.o 
+
+echo "--------------------------------Compile the utilities"
+
+${MYCC} -o FrDump      ../src/FrDump.c    ${FLAGS} 
+${MYCC} -o FrCopy      ../src/FrCopy.c    ${FLAGS} 
+${MYCC} -o FrCheck     ../src/FrCheck.c   ${FLAGS} 
+ln -s FrDump  FrDump.exe
+ln -s FrCopy  FrCopy.exe
+ln -s FrCheck FrCheck.exe
+
+echo "------------------Compile and Build the debug library"
+${MYCC} -g  -c ../src/FrameL.c ../src/FrIO.c  ../src/FrFilter.c ../src/zlib/*.c -I../src/zlib
+rm  -f libFrameDebug.a
+ar   r libFrameDebug.a  *.o
+ranlib libFrameDebug.a
+
+echo "-------------------------------------Delete *.o files"        
+rm   -f  *.o
+ls -l
+echo "--------------------------------------------All done"

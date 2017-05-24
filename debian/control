@@ -1,0 +1,52 @@
+Source: libframe
+Section: lscsoft
+Priority: optional
+Maintainer: Kipp Cannon <kipp@gravity.phys.uwm.edu>
+Build-Depends: debhelper (>= 7.0.0)
+Standards-Version: 3.8.6
+
+Package: libframe1
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: libframe0 (<= 6.24.8-2lscsoft9), python-libframe, libframe-root
+Suggests: libframe-utils
+Description: LIGO/VIRGO frame library
+ A Common Data Frame Format for Interferometric Gravitational Wave Detector
+ has been developed by VIRGO and LIGO.  The Frame Library is a software
+ dedicated to the frame manipulation including file input/output.
+ .
+ This package contains the shared-object library needed to run libframe
+ applications.
+
+Package: libframe-dev
+Architecture: any
+Depends: libframe1 (= ${Source-Version})
+Description: LIGO/VIRGO frame library development files
+ A Common Data Frame Format for Interferometric Gravitational Wave Detector
+ has been developed by VIRGO and LIGO.  The Frame Library is a software
+ dedicated to the frame manipulation including file input/output.
+ .
+ This package contains the files needed for building libframe programs, as
+ well as the documentation for the library.
+
+Package: libframe-utils
+Architecture: any
+Depends: ${shlibs:Depends}, libframe1 (= ${Source-Version})
+Description: LIGO/VIRGO frame file utilities
+ A Common Data Frame Format for Interferometric Gravitational Wave Detector
+ has been developed by VIRGO and LIGO.  The Frame Library is a software
+ dedicated to the frame manipulation including file input/output.
+ .
+ This package contains some utilities for manipulating frame files.
+
+Package: libframe-matlab
+Architecture: any
+Depends: ${shlibs:Depends}, libframe1 (= ${Source-Version})
+Conflicts: libframe-matlab
+Description: Matlab bindings for libframe
+ A Common Data Frame Format for Interferometric Gravitational Wave Detector
+ has been developed by VIRGO and LIGO.  The Frame Library is a software
+ dedicated to the frame manipulation including file input/output.
+ .
+ This package contains Matlab bindings for manipulating frame files from
+ within Matlab.

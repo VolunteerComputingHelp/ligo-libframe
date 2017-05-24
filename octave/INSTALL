@@ -1,0 +1,98 @@
+---------------------------------------------------------------------------
+
+FRAME TO OCTAVE INTERFACE
+---------------------------------------------------------------------------
+Author: Eric Chassande-Mottin [ecm@obs-nice.fr]
+Date: Wed Oct 17 22:12:58 CEST 2001
+---------------------------------------------------------------------------
+
+This file may be used under the terms defined by the GNU 
+General Public License [write to the Free Software Foundation, 
+59 Temple Place - Suite 330, Boston, MA  02111-1307, USA]
+
+WITHOUT ANY WARRANTY; without even the implied warranty 
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+
+---------------------------------------------------------------------------
+
+This directory contains two routines [loadadc, loadproc] for loading
+ADC and PROC data from a given frame file into the Octave context.
+
+GNU Octave [www.octave.org] is a high-level language, primarily intended for 
+numerical computations.  
+
+---------------------------------------------------------------------------
+
+INSTALLATION
+------------
+
+1) Requirements
+
+You need to have Octave (2.0.16 and +) installed with support
+for dynamic linking.  To find out if it does, type the command
+
+       x = octave_config_info; x.DEFS
+
+at the Octave prompt.  Support for dynamic linking is included if
+the output contains the string -DWITH_DYNAMIC_LINKING=1.
+
+Check whether you have the compilation script for dynamically linked 
+function (DLD) in your PATH. To do so, type :
+
+      which mkoctfile
+
+at the shell prompt. The path to this script should appear, if you have it.
+
+You need also to have the Frame Library (v4r40 and more) and a recent version
+of GNU make.
+
+2) Install
+
+a) cd to the frame2oct directory
+b) open Makefile and put the right path to the FrameLib includes and library,
+line 7: FRAME_INC = [your_path_to_FrameL.h]
+line 8: FRAME_LIB = [your_path_to_libFrame.a]
+c) and type make.
+
+This should produce two .oct files :
+
+loadadc.oct
+loadproc.oct
+
+3) Test
+
+You may test the good functioning of the routines by running the test script
+[plotframe.m] which use the test framefile [test.dat] in root/ of the Frame
+Lib distribution.
+
+a) open Octave in the frame2oct directory
+b) type
+
+      plotframe
+
+at the Octave prompt. The script produces a plots the 1024 first data points 
+of the ADC signal 'Adc0', computes and plots its spectrum.
+
+---------------------------------------------------------------------------
+
+RUNNING
+-------
+
+Once compiled and tested, you should put loadadc.oct and loadproc.oct in 
+your OCTAVE_PATH. To have a description of how loadadc and loadproc should 
+be used, read the online help you get by entering
+
+help loadadc
+or 
+help loadproc
+
+at the Octave prompt.  
+
+---------------------------------------------------------------------------
+
+REPORT BUGS
+-----------
+
+If you find errors and bugs, send a mail to ecm@obs-nice.fr with
+a precise description of what the problem is, jointly to logs if
+possible.

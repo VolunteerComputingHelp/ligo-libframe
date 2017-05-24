@@ -1,0 +1,38 @@
+#!/bin/sh
+
+MYCC="gcc -g -Wall"
+MYUNAME=${UNAME:-`uname`}
+#--------------- special convention on alpha and Linux
+if  [ $MYUNAME = "OSF1" ] 
+then MYUNAME="alpha"
+fi
+if  [ $MYUNAME = "Linux" ] 
+then MYUNAME=`uname`-`uname -m`
+fi
+
+BIN=../${MYUNAME}
+FLAGS=" -I../src $BIN/libFrameDebug.a -lm"
+
+echo " ----------------------> This is $MYUNAME <------------------"
+
+echo "-----We Compile the examples and test program with $MYCC "
+
+${MYCC} -o $BIN/FrCompress   ../src/exampleCompress.c   ${FLAGS} 
+${MYCC} -o $BIN/FrCopyFile   ../src/exampleCopyFile.c   ${FLAGS} 
+${MYCC} -o $BIN/FrCopyFrame  ../src/exampleCopyFrame.c  ${FLAGS} 
+${MYCC} -o $BIN/FrFileDump   ../src/exampleFileDump.c   ${FLAGS} 
+${MYCC} -o $BIN/FrFull       ../src/exampleFull.c       ${FLAGS} 
+${MYCC} -o $BIN/FrMark       ../src/exampleMark.c       ${FLAGS} 
+${MYCC} -o $BIN/FrMultiR     ../src/exampleMultiR.c     ${FLAGS} 
+${MYCC} -o $BIN/FrMultiTOC   ../src/exampleMultiTOC.c   ${FLAGS} 
+${MYCC} -o $BIN/FrMultiW     ../src/exampleMultiW.c     ${FLAGS} 
+${MYCC} -o $BIN/FrOnline     ../src/exampleOnline.c     ${FLAGS} 
+${MYCC} -o $BIN/FrReshape    ../src/exampleReshape.c    ${FLAGS} 
+${MYCC} -o $BIN/FrSpeed      ../src/exampleSpeed.c      ${FLAGS} 
+${MYCC} -o $BIN/FrStat       ../src/exampleStat.c       ${FLAGS} 
+${MYCC} -o $BIN/FrEvent      ../src/exampleEvent.c      ${FLAGS} 
+${MYCC} -o $BIN/FrFilter     ../src/exampleFilter.c     ${FLAGS} 
+${MYCC} -o $BIN/FrMultiWD    ../src/exampleMultiWD.c    ${FLAGS}
+${MYCC} -o $BIN/FrIInMemory  ../src/exampleIInMemory.c  ${FLAGS}
+
+echo "---------------------------------------------------All done"
