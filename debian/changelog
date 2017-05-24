@@ -1,6 +1,7 @@
-libframe (8.30-2) experimental; urgency=low
+ligo-libframe (8.30-2) experimental; urgency=low
 
   * Adjusted debian/watch file
+  * Renamed source package name to avoid conflict with libframe
 
  -- Steffen Moeller <moeller@debian.org>  Wed, 24 May 2017 23:53:51 +0200
 
