@@ -1,9 +1,11 @@
 Source: libframe
-Section: lscsoft
+Section: science
 Priority: optional
 Maintainer: Kipp Cannon <kipp@gravity.phys.uwm.edu>
-Build-Depends: debhelper (>= 7.0.0)
-Standards-Version: 3.8.6
+Uploaders: Adam Mercer <adam.mercer@gmail.com>,
+           Steffen Moeller <moeller@debian.org>
+Build-Depends: debhelper (>= 9.0.0)
+Standards-Version: 3.9.8
 
 Package: libframe1
 Architecture: any
@@ -20,7 +22,7 @@ Description: LIGO/VIRGO frame library
 
 Package: libframe-dev
 Architecture: any
-Depends: libframe1 (= ${Source-Version})
+Depends: ${misc:Depends}, libframe1 (= ${binary:Version})
 Description: LIGO/VIRGO frame library development files
  A Common Data Frame Format for Interferometric Gravitational Wave Detector
  has been developed by VIRGO and LIGO.  The Frame Library is a software
@@ -31,7 +33,7 @@ Description: LIGO/VIRGO frame library development files
 
 Package: libframe-utils
 Architecture: any
-Depends: ${shlibs:Depends}, libframe1 (= ${Source-Version})
+Depends: ${misc:Depends}, ${shlibs:Depends}, libframe1 (>= ${source:Version}), libframe1 (<< ${source:Version}+1~)
 Description: LIGO/VIRGO frame file utilities
  A Common Data Frame Format for Interferometric Gravitational Wave Detector
  has been developed by VIRGO and LIGO.  The Frame Library is a software
@@ -41,7 +43,7 @@ Description: LIGO/VIRGO frame file utilities
 
 Package: libframe-matlab
 Architecture: any
-Depends: ${shlibs:Depends}, libframe1 (= ${Source-Version})
+Depends: ${misc:Depends}, ${shlibs:Depends}, libframe1 (>= ${source:Version}), libframe1 (<< ${source:Version}+1~)
 Conflicts: libframe-matlab
 Description: Matlab bindings for libframe
  A Common Data Frame Format for Interferometric Gravitational Wave Detector

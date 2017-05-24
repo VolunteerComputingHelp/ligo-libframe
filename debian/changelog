@@ -1,4 +1,10 @@
-libframe (8.30-1) unstable; urgency=low
+libframe (8.30-2) experimental; urgency=low
+
+  * Adjusted debian/watch file
+
+ -- Steffen Moeller <moeller@debian.org>  Wed, 24 May 2017 23:53:51 +0200
+
+libframe (8.30-1) testing; urgency=low
 
   * libframe-8.30
 

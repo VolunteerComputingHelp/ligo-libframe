@@ -1,36 +1,70 @@
-This package was debianized by Kipp Cannon <kipp@gravity.phys.uwm.edu> on
-Mon, 9 Aug 2004 12:33:00 -0500.
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: http://lappweb.in2p3.fr/virgo/FrameL
+Upstream-Name: FrameL
 
-It was downloaded from http://lappweb.in2p3.fr/virgo/FrameL
+Files: *
+Copyright: 2000-2009 Benoit Mours
+           2002      R. Willams
+           2002      Peter Shawhan
+           2002      D. Verkindt
+           2006      Greg Mendell
+License: FrameL
 
-Upstream Author(s): Benoit Mours
+Files: octave/*
+Copyright: 2001 Eric Chassande-Mottin <ecm@obs-nice.fr>
+License: GPL
 
-Copyright:
-
-Frame Library Software Terms and Conditions
-
-The authors hereby grant permission to use, copy, and distribute this
-software and its documentation for any purpose, provided that existing
-copyright notices are retained in all copies and that this notice is
-included verbatim in any distributions. Additionally, the authors grant
-permission to modify this software and its documentation for any purpose,
-provided that such modifications are not distributed without the explicit
-consent of the authors and that existing copyright notices are retained in
-all copies. Users of the software are asked to feed back problems, benefits,
-and/or suggestions about the authors.
-Support for this software - fixing of bugs, incorporation of new features -
-is done on a best effort basis. All bug fixes and enhancements will be made
-available under the same terms and conditions as the original software,
+Files: Python/*
+Copyright: Nickolas Fotopoulos <nvf@gravity.phys.uwm.edu>
+License: FrameL
 
 
-IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY FOR
-DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
-OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY DERIVATIVES THEREOF,
-EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Files: debian/*
+Copyright: 2004-2016 Kipp Cannon <kipp@gravity.phys.uwm.edu>
+           2009-2016 Adam Mercer <adam.mercer@gmail.com>
+License: FrameL
 
-THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
-INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. THIS SOFTWARE IS
-PROVIDED ON AN "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE NO
-OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
-MODIFICATIONS.
+License: FrameL
+  Frame Library Software Terms and Conditions
+ .
+  The authors hereby grant permission to use, copy, and distribute this
+  software and its documentation for any purpose, provided that existing
+  copyright notices are retained in all copies and that this notice is
+  included verbatim in any distributions. Additionally, the authors grant
+  permission to modify this software and its documentation for any purpose,
+  provided that such modifications are not distributed without the explicit
+  consent of the authors and that existing copyright notices are retained in
+  all copies. Users of the software are asked to feed back problems, benefits,
+  and/or suggestions about the authors.
+  Support for this software - fixing of bugs, incorporation of new features -
+  is done on a best effort basis. All bug fixes and enhancements will be made
+  available under the same terms and conditions as the original software,
+ .
+  IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY FOR
+  DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT
+  OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY DERIVATIVES THEREOF,
+  EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ .
+  THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. THIS SOFTWARE IS
+  PROVIDED ON AN "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE NO
+  OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
+  MODIFICATIONS.
+
+License: GPL
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License can be found in "/usr/share/common-licenses/GPL-2".
