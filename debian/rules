@@ -3,6 +3,8 @@
 	dh $@
 
 override_dh_auto_configure:
+	aclocal
+	automake
 	./configure \
 	    --prefix=/usr \
 	    --docdir=/usr/share/doc/libframe-dev
